@@ -24,10 +24,8 @@ wss.on('connection', (ws) => {
     console.log('Client registered');
     ws.onmessage = function (event) {
         console.log('Message received');
-        for(const key in clients) {
-            if(key !== clientId) {
-              clients[key].send(event.data);
-            }
+        for (const key in clients) {
+            clients[key].send(event.data);
         }
         console.log('Message sent to all connected clients');
     }
